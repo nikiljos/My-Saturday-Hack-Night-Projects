@@ -4,6 +4,3 @@
 [submodule "2-Github-API"]
 	path = 2-Github-API
 	url = https://github.com/nikiljos/shn-github-api
-[submodule "test"]
-	path = test
-	url = https://github.com/nikiljos/camera
