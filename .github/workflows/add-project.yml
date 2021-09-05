@@ -25,6 +25,8 @@ jobs:
             git submodule add ${{ github.event.inputs.repo_url }} "${{ github.event.inputs.folder_name }}"
        - name: Commit changes
          run: |
+            git config user.name nikiljos-bot
+            git config user.email bot@nikjos.in
             git add --all || true
             git commit -m "Added ${{ github.event.inputs.folder_name }}" || true
             git push --quiet
