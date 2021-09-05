@@ -1,6 +1,0 @@
-[submodule "shn-dialogflow-api"]
-	path = shn-dialogflow-api
-	url = https://github.com/nikiljos/shn-dialogflow-api
-[submodule "shn-github-api"]
-	path = shn-github-api
-	url = https://github.com/nikiljos/shn-github-api
