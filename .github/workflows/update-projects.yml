@@ -1,0 +1,18 @@
+name: Update Projects
+on:
+  workflow_dispatch:
+jobs:
+  version-bump:
+    name: Update Projects
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout Source
+         uses: actions/checkout@v2
+       - name: Pull the latest changes
+         run: |
+            git submodule update --remote --init || true
+       - name: Commit changes
+         run: |
+            git add --all || true
+            git commit -m "Updated projects" || true
+            git push --quiet
