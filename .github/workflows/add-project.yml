@@ -34,11 +34,12 @@ jobs:
             git submodule add https://github.com/${{ github.event.inputs.repo_name }} "${{ github.event.inputs.index }}-${{ github.event.inputs.api_name }}-API"
        - name: Add URL to README
          run: |
+            echo "API Data -------------- ${{ steps.apidata.outputs.response.homepage }} ------------------- ${{ steps.apidata.outputs.response }}"
             printf "\n${{ github.event.inputs.index }}. [${{ github.event.inputs.api_name }} API](${{ steps.apidata.outputs.response.homepage }})" >> README.md
        - name: Commit changes
          run: |
             git config user.name nikiljos-bot
             git config user.email bot@nikjos.in
             git add --all || true
-            git commit -m "Added ${{ github.event.inputs.folder_name }}" || true
+            git commit -m "Added ${{ github.event.inputs.api_name }}" || true
             git push --quiet
