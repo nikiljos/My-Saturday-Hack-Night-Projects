@@ -4,9 +4,3 @@
 [submodule "2-Github-API"]
 	path = 2-Github-API
 	url = https://github.com/nikiljos/shn-github-api
-[submodule "3-Test2-API"]
-	path = 3-Test2-API
-	url = https://github.com/nikiljos/camera
-[submodule "4-Test21-API"]
-	path = 4-Test21-API
-	url = https://github.com/nikiljos/nikiljos
