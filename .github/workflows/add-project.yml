@@ -11,6 +11,8 @@ on:
       api_name:
         description: 'API Name'
         required: true
+      live_url:
+        description: 'Hosted URL of the project'        
 concurrency:
     group: add-project
     cancel-in-progress: false
@@ -19,12 +21,6 @@ jobs:
     name: Add Project
     runs-on: ubuntu-latest
     steps:
-       - name: Fetch Homepage URL using Github API
-         id: apidata
-         uses: fjogeleit/http-request-action@master
-         with:
-           url: "https://api.github.com/repos/${{ github.event.inputs.repo_name }}"
-           method: GET
        - name: Checkout Source
          uses: actions/checkout@v2
        - name: Add project as submodule
@@ -34,8 +30,7 @@ jobs:
             git submodule add https://github.com/${{ github.event.inputs.repo_name }} "${{ github.event.inputs.index }}-${{ github.event.inputs.api_name }}-API"
        - name: Add URL to README
          run: |
-            echo "API Data -------------- ${{ steps.apidata.outputs.response.homepage }} ------------------- ${{ steps.apidata.outputs.response }}"
-            printf "\n${{ github.event.inputs.index }}. [${{ github.event.inputs.api_name }} API](${{ steps.apidata.outputs.response.homepage }})" >> README.md
+            printf "\n${{ github.event.inputs.index }}. [${{ github.event.inputs.api_name }} API](${{ github.event.inputs.live_url }})" >> README.md
        - name: Commit changes
          run: |
             git config user.name nikiljos-bot
